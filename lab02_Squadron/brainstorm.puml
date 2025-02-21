@@ -1,0 +1,57 @@
+@startuml
+class Squadron {
+	+getShip(i)
+	+addShip(ship)
+	-removeShip(&ship)
+	+getMaxSpeed()
+}
+
+class Node {
+	-ship
+	-next: *Node
+}
+
+class ShipList {
+	-first: *Node
+	-last: *Node
+	-size: int
+	+push(&ship)
+	+remove(&ship)
+	+get(i)
+}
+
+abstract class Ship {
+	-name
+	-id
+	+ Ship(id, model, weight, speed)
+	+formatToStream()
+	+getConsommation(distance, speed)
+	+{abstract} getTotalWeight()
+	+{abstract} getSpeed()
+	+{abstract} getModel()
+	+{abstract} getModel()
+	+setNickname(name)
+	+toString()
+}
+
+abstract class ShipCargo extends Ship {
+	- cargoWeight
+	+ getTotalWeight()
+	+ getCargoWeight()
+}
+
+class TIE extends Ship {
+
+}
+
+class Interceptor extends Ship {}
+class Shuttle extends ShipCargo {}
+class Dreadnought extends ShipCargo {}
+
+
+' Associations
+
+Squadron "*" o--"*" Ship
+Node -up-* ShipList
+Squadron "1"-"1" ShipList
+@enduml

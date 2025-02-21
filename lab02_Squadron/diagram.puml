@@ -1,0 +1,165 @@
+@startuml
+
+note "Fonctions libres\ncounterId(): unsigned int\noperator<<(os: std::ostream&, squadron: const Squadron&): std::ostream&\noperator+(lhs: Ship&, rhs: const Squadron&): Squadron\noperator-(lhs: Ship&, rhs: const Squadron&): Squadron" as n1
+
+
+
+
+/' Objects '/
+
+class Dreadnought {
+	+Dreadnought(load: long double)
+	+getCapacity_const() : long double
+	+getWeight_const() : long double
+	-getClass_const() : std::string
+	-getNameModel_const() : std::string
+	-getSpeed_const() : unsigned int
+}
+
+
+abstract class Ship {
+	+Ship(id: unsigned int)
+	+~Ship()
+	+getConsommation_const(distance: long double, speed: unsigned int) : long double
+	+{abstract} getTotalWeight_const() : long double
+	-nickName : std::optional<std::string>
+	+formatToStream_const(os: std::ostream&) : std::ostream&
+	-{abstract} getModel_const() : std::string
+	+{abstract} getSpeed_const() : unsigned int
+	-id : unsigned int
+	+setNickname(nick: const std::string&) : void
+}
+
+
+abstract class ShipCargo {
+	+ShipCargo(load: long double, id: unsigned int, capacity: long double)
+	+~ShipCargo()
+	-{abstract} getCapacity_const() : long double
+	+getTotalWeight_const() : long double
+	-{abstract} getWeight_const() : long double
+	-load : long double
+	-{static} validateLoad(loadTest: long double, capacity: long double) : long double
+	+formatToStream_const(os: std::ostream&) : std::ostream&
+	-{abstract} getClass_const() : std::string
+	-getModel_const() : std::string
+	-{abstract} getNameModel_const() : std::string
+}
+
+
+class Shuttle {
+	+Shuttle(load: long double)
+	-getCapacity_const() : long double
+	+getWeight_const() : long double
+	-getClass_const() : std::string
+	-getNameModel_const() : std::string
+	+getSpeed_const() : unsigned int
+}
+
+
+class Squadron {
+	+Squadron(name: std::string)
+	+Squadron(other: const Squadron&)
+	+Squadron(other: Squadron&&)
+	+~Squadron()
+	+getShip_const(index: size_t) : Ship&
+	+operator+_const(rhs: Ship&) : Squadron
+	+operator+(lhs: Ship&, rhs: const Squadron&) : Squadron
+	+operator-_const(rhs: Ship&) : Squadron
+	+operator-(lhs: Ship&, rhs: const Squadron&) : Squadron
+	+addShipToThis(ship: Ship&) : Squadron&
+	+operator+=(ship: Ship&) : Squadron&
+	+operator-=(ship: Ship&) : Squadron&
+	+operator=(other: const Squadron&) : Squadron&
+	+operator=(other: Squadron&&) : Squadron&
+	+removeShipFromThis(ship: Ship&) : Squadron&
+	+addShip(ship: Ship&) : Squadron*
+	+removeShip(ship: Ship&) : Squadron*
+	-belongToSquadron_const(ship: const Ship&) : bool
+	+isEmpty_const() : bool
+	+fuelConsRide_const(speed: unsigned int, distance: long double) : long double
+	-getTotalWeight_const() : long double
+	+operator<<(os: std::ostream&, squadron: const Squadron&) : std :: ostream&
+	+formatToStream_const(os: std::ostream&) : std::ostream&
+	-name : std::string
+	-getMaxSpeed_const() : unsigned int
+	-copyShips(other: const Squadron&) : void
+	-deleteNodes() : void
+	+dethroneLeader() : void
+	+exchange(other: Squadron&) : void
+	-init() : void
+	+setLeader(leader: Ship&) : void
+}
+
+
+class TIE {
+	+TIE()
+	+getTotalWeight_const() : long double
+	-typeTIE_const() : std::string
+	+getSpeed_const() : unsigned int
+}
+
+
+class TIEInterceptor {
+	+TIEInterceptor()
+	+getTotalWeight_const() : long double
+	-typeTIE_const() : std::string
+	+getSpeed_const() : unsigned int
+}
+
+
+abstract class TIEModel {
+	+TIEModel(id: unsigned int)
+	+~TIEModel()
+	-getModel_const() : std::string
+	-{abstract} typeTIE_const() : std::string
+}
+
+
+class Squadron::Node {
+	+ship : Ship*
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Ship <|-- ShipCargo
+
+
+Ship <|-- TIEModel
+
+
+ShipCargo <|-- Dreadnought
+
+
+ShipCargo <|-- Shuttle
+
+
+TIEModel <|-- TIE
+
+
+TIEModel <|-- TIEInterceptor
+
+
+
+
+
+/' Aggregation relationships '/
+
+Squadron::Node o--"1" Ship
+
+
+
+
+
+
+/' Nested objects '/
+
+Squadron +-- Squadron::Node
+
+
+
+
+@enduml

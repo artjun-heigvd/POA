@@ -1,0 +1,68 @@
+    @startuml
+skinparam classAttributeIconSize 0
+
+class Field {
+    - grid: Grid
+    - humanoids: List
+    - turn: int
+    ---
+    + nextTurn(): int
+    + getClosest(type, h): Humanoid
+}
+
+class Grid {
+    - size: Point
+    - cells: List
+    ---
+    + moveTo(x, y): void
+}
+
+abstract class Humanoid {
+    # position: Point
+    # alive: bool
+    ---
+    + setAction(f: Field): void
+    + executeAction(f: Field): void
+    + isAlive(): bool
+}
+
+class Buffy {
+    - action: Action
+}
+
+class Human {
+    - action: Action
+}
+
+class Vampire {
+    - action: Action
+}
+
+Humanoid <|-- Buffy
+Humanoid <|-- Human
+Humanoid <|-- Vampire
+
+abstract class Action {
+    # targetPosition: Point
+    ---
+    + execute(f: Field): void
+}
+
+class AttackAction {
+}
+
+class ChaseAction {
+}
+
+class MoveRandomAction {
+}
+
+
+Action <|-- AttackAction
+Action <|-- ChaseAction
+Action <|-- MoveRandomAction
+
+Field *-- Grid
+Field o-- Humanoid
+
+@enduml

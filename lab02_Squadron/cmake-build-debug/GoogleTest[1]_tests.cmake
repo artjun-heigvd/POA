@@ -1,0 +1,7 @@
+add_test([=[HelloTest.BasicAssertions]=]  /home/ajun/Documents/HEIG/POA/lab02_Squadron/lab02-squadron-roland-haeffner-junod/cmake-build-debug/GoogleTest [==[--gtest_filter=HelloTest.BasicAssertions]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[HelloTest.BasicAssertions]=]  PROPERTIES WORKING_DIRECTORY /home/ajun/Documents/HEIG/POA/lab02_Squadron/lab02-squadron-roland-haeffner-junod/cmake-build-debug SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[Constructor.BasicConstructor]=]  /home/ajun/Documents/HEIG/POA/lab02_Squadron/lab02-squadron-roland-haeffner-junod/cmake-build-debug/GoogleTest [==[--gtest_filter=Constructor.BasicConstructor]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[Constructor.BasicConstructor]=]  PROPERTIES WORKING_DIRECTORY /home/ajun/Documents/HEIG/POA/lab02_Squadron/lab02-squadron-roland-haeffner-junod/cmake-build-debug SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[Constructor.CopyConstructor]=]  /home/ajun/Documents/HEIG/POA/lab02_Squadron/lab02-squadron-roland-haeffner-junod/cmake-build-debug/GoogleTest [==[--gtest_filter=Constructor.CopyConstructor]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[Constructor.CopyConstructor]=]  PROPERTIES WORKING_DIRECTORY /home/ajun/Documents/HEIG/POA/lab02_Squadron/lab02-squadron-roland-haeffner-junod/cmake-build-debug SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  GoogleTest_TESTS HelloTest.BasicAssertions Constructor.BasicConstructor Constructor.CopyConstructor)

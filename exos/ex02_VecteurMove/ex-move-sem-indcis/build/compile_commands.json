@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/ajun/Documents/HEIG/POA/exos/ex02_VecteurMove/ex-move-sem-indcis/build",
+  "command": "/usr/lib64/ccache/clang++   -g -o CMakeFiles/vector_move.dir/vectormove.o -c /home/ajun/Documents/HEIG/POA/exos/ex02_VecteurMove/ex-move-sem-indcis/vectormove.cpp",
+  "file": "/home/ajun/Documents/HEIG/POA/exos/ex02_VecteurMove/ex-move-sem-indcis/vectormove.cpp",
+  "output": "CMakeFiles/vector_move.dir/vectormove.o"
+},
+{
+  "directory": "/home/ajun/Documents/HEIG/POA/exos/ex02_VecteurMove/ex-move-sem-indcis/build",
+  "command": "/usr/lib64/ccache/clang++   -g -fno-elide-constructors -o CMakeFiles/vector_move_no_copy_elision.dir/vectormove.o -c /home/ajun/Documents/HEIG/POA/exos/ex02_VecteurMove/ex-move-sem-indcis/vectormove.cpp",
+  "file": "/home/ajun/Documents/HEIG/POA/exos/ex02_VecteurMove/ex-move-sem-indcis/vectormove.cpp",
+  "output": "CMakeFiles/vector_move_no_copy_elision.dir/vectormove.o"
+}
+]

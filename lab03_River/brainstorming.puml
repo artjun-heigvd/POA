@@ -1,0 +1,196 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Bank {
+	+Bank(name: std::string)
+}
+
+
+class Boat {
+	+Boat(name: std::string)
+	-current : Bank*
+	+getCurrentBank_const() : Bank*
+	-MAX_PERSON : const char
+	+toString_const() : std::string
+	+setNewBank(current: Bank*) : void
+}
+
+
+class Boy {
+	+Boy(name: std::string, mother: Mother*, father: Father*)
+	+getPrimaryParent_const() : Parent*
+	+getSecondaryParent_const() : Parent*
+}
+
+
+abstract class Child {
+	+Child(name: std::string, mother: Mother*, father: Father*)
+	#father : Father*
+	#mother : Mother*
+	+{abstract} getPrimaryParent_const() : Parent*
+	+{abstract} getSecondaryParent_const() : Parent*
+	+canDrive() : bool
+	+isValid_const(container: const Container&) : bool
+}
+
+
+class Container {
+	+Container(name: std::string)
+	+findByName(name: std::string) : Person*
+	+contains_const(searched: Person*) : bool
+	+isValid_const(p: Person*) : bool
+	-_occupants : std::list<Person*>
+	+getMemory() : std::list<Person*>&
+	+getSize_const() : std::size_t
+	+listToString_const() : std::string
+	-name : std::string
+	+toString_const() : std::string
+	+add(p: Person*) : void
+	+remove(p: Person*) : void
+}
+
+
+class Controller {
+	+Controller()
+	+~Controller()
+	-_boat : Boat
+	+findByNameInBoat(name: std::string) : Person*
+	+findByNameInCurrentBank(name: std::string) : Person*
+	-_banks : std::array<Bank, 2>
+	-_persons : std::list<Person*>
+	+disembark(person: Person*) : void
+	+embark(person: Person*) : void
+	+moveBoat() : void
+	+print() : void
+	-{static} printLine(c: char) : void
+	+{static} showMenu() : void
+}
+
+
+class Cop {
+	+Cop(: std::string)
+	+canDrive() : bool
+	+isValid_const(container: const Container&) : bool
+}
+
+
+class Father {
+	+Father(name: std::string)
+}
+
+
+class Girl {
+	+Girl(name: std::string, mother: Mother*, father: Father*)
+	+getPrimaryParent_const() : Parent*
+	+getSecondaryParent_const() : Parent*
+}
+
+
+class Mother {
+	+Mother(name: std::string)
+}
+
+
+class Parent {
+	+Parent(: std::string)
+	+canDrive() : bool
+	+isValid_const(container: const Container&) : bool
+}
+
+
+abstract class Person {
+	+Person(name: std::string)
+	+~Person()
+	+canDrive() : bool
+	+{abstract} isValid_const(container: const Container&) : bool
+	+getName() : std::string
+	-name : std::string
+}
+
+
+class Thief {
+	+Thief(name: std::string, designatedCop: Cop*)
+	-designatedCop : Cop*
+	+canDrive() : bool
+	+isValid_const(container: const Container&) : bool
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Child <|-- Boy
+
+
+Child <|-- Girl
+
+
+Container <|-- Bank
+
+
+Container <|-- Boat
+
+
+Parent <|-- Father
+
+
+Parent <|-- Mother
+
+
+Person <|-- Child
+
+
+Person <|-- Cop
+
+
+Person <|-- Parent
+
+
+Person <|-- Thief
+
+
+
+
+
+/' Aggregation relationships '/
+
+Boat o-- Bank
+
+
+Child o-- Father
+
+
+Child o-- Mother
+
+
+Container o-- Person
+
+
+Controller *-- Bank
+
+
+Controller *-- Boat
+
+
+Controller o-- Person
+
+
+Thief o-- Cop
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

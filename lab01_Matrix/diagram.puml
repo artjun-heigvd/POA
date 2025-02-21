@@ -1,0 +1,109 @@
+@startuml
+
+!theme _none_
+hide circle
+skinparam classAttributeIconSize 0
+skinparam ClassFontSize 18
+scale 3
+
+/' Objects '/
+
+class Addition {
+	+operate_const(first: long long, second: long long) : long long
+}
+
+
+class Matrix {
+	-Matrix(line: size_t, column: size_t, modulo: unsigned, init: bool)
+	+Matrix(line: size_t, column: size_t, modulo: unsigned)
+	+Matrix(other: const Matrix&)
+	+Matrix(other: Matrix&&)
+	+~Matrix()
+	+additionMatrix_const(other: const Matrix&) : Matrix
+	+multiplicationMatrix_const(other: const Matrix&) : Matrix
+	-operateMatrix_const(other: const Matrix&, function: const Operation&) : Matrix
+	+subtractionMatrix_const(other: const Matrix&) : Matrix
+	+additionThis(other: const Matrix&) : Matrix&
+	+multiplicationThis(other: const Matrix&) : Matrix&
+	-operateThis(other: const Matrix&, function: const Operation&) : Matrix&
+	+operator=(other: const Matrix&) : Matrix&
+	+operator=(other: Matrix&&) : Matrix&
+	+subtractionThis(other: const Matrix&) : Matrix&
+	+additionPointer_const(other: const Matrix&) : Matrix*
+	+multiplicationPointer_const(other: const Matrix&) : Matrix*
+	-operatePointer_const(other: const Matrix&, function: const Operation&) : Matrix*
+	+subtractionPointer_const(other: const Matrix&) : Matrix*
+	-m : size_t
+	-n : size_t
+	-{static} ADD : const Addition
+	-{static} MULT : const Multiplication
+	-{static} SUB : const Subtraction
+	+operator<<(os: std::ostream&, matrix: const Matrix&) : std :: ostream&
+	-getMaxLinesColumns_const(first: const Matrix&, second: const Matrix&) : std::pair<unsigned , unsigned>
+	+toString_const() : std::string
+	+getValueOrZero_const(i: unsigned, j: unsigned) : unsigned
+	-modulo : unsigned
+	-{static} applyModulo(value: long long, modulo: unsigned int) : unsigned int
+	-checkModulo(mod: unsigned int) : unsigned int
+	-{static} initData(line: size_t, column: size_t) : unsigned*
+	-data : unsigned**
+	-{static} applyOperation(result: Matrix&, first: const Matrix&, second: const Matrix&, op: const Operation&) : void
+	-deleteData() : void
+	-exchangeMatrix(other: Matrix&) : void
+	-{static} matrixCopyData(m1: const Matrix&, m2: const Matrix&) : void
+}
+
+
+class Multiplication {
+	+operate_const(first: long long, second: long long) : long long
+}
+
+
+abstract class Operation {
+	+~Operation()
+	+{abstract} operate_const(first: long long, second: long long) : long long
+}
+
+
+class Subtraction {
+	+operate_const(first: long long, second: long long) : long long
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Operation <|-- Addition
+
+
+Operation <|-- Multiplication
+
+
+Operation <|-- Subtraction
+
+
+
+
+
+/' Aggregation relationships '/
+
+Matrix *-- Addition
+
+
+Matrix *-- Multiplication
+
+
+Matrix *-- Subtraction
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "buffy",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "buffy::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-buffy-Debug-afebfe1226da0e6857ef.json",
+					"name" : "buffy",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ajun/Documents/HEIG/POA/lab04_Buffy/lab4-buffy-2024-roland-haeffner-junod_lab4/cmake-build-debug",
+		"source" : "/home/ajun/Documents/HEIG/POA/lab04_Buffy/lab4-buffy-2024-roland-haeffner-junod_lab4"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

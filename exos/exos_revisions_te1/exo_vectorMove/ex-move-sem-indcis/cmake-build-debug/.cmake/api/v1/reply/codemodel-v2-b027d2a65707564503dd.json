@@ -1,0 +1,65 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "vector_move::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vector_move-Debug-65a0949cacd8df4330e4.json",
+					"name" : "vector_move",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vector_move_no_copy_elision::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vector_move_no_copy_elision-Debug-402a95cdbcb48aa897c7.json",
+					"name" : "vector_move_no_copy_elision",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ajun/Documents/HEIG/POA/exos/exos_revisions_te1/exo_vectorMove/ex-move-sem-indcis/cmake-build-debug",
+		"source" : "/home/ajun/Documents/HEIG/POA/exos/exos_revisions_te1/exo_vectorMove/ex-move-sem-indcis"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
